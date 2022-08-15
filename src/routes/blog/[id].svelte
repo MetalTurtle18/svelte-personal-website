@@ -19,6 +19,8 @@
 </script>
 
 <script>
+    import { PUBLIC_SITE_TITLE } from '$env/static/public'
+
     export let post
 
     let {
@@ -26,6 +28,10 @@
         content
     } = post
 </script>
+
+<svelte:head>
+    <title>{`${title} • ${PUBLIC_SITE_TITLE}`}</title>
+</svelte:head>
 
 <h1>{title}</h1>
 <h2>{date}</h2>
