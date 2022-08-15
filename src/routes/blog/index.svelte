@@ -1,4 +1,4 @@
-<script context='module' lang='ts'>
+<script context="module" lang="ts">
     export const load = async ({ fetch }) => {
         const posts = await fetch('/api/posts.json')
         const allPosts = await posts.json()
@@ -11,7 +11,7 @@
     }
 </script>
 
-<script lang='ts'>
+<script lang="ts">
     export let posts
 </script>
 

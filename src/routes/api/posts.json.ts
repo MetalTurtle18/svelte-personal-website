@@ -19,12 +19,14 @@ type PostFile = [string, Resolver]
 
 export type Post = {
     meta: Metadata
-    path: string,
-    content: string
+    path: string
+    content: string | null
 }
 
-export const GET = async () => {
-    const allPostFiles: Record<string, Resolver> = import.meta.glob<MarkdownFile>('../../../blog/*.md')
+export const GET = async ({ url }: { url: { searchParams: URLSearchParams } }) => {
+    const allPostFiles: Record<string, Resolver> = import.meta.glob<MarkdownFile>(
+        '../../../blog/*.md'
+    )
     const iterablePostFiles: PostFile[] = Object.entries(allPostFiles)
 
     const allPosts: Post[] = await Promise.all(
@@ -36,7 +38,7 @@ export const GET = async () => {
             return {
                 meta: metadata,
                 path: postPath,
-                content: htmlContent
+                content: url.searchParams.get('withContent') === 'true' ? htmlContent : null
             }
         })
     )

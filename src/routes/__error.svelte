@@ -1,4 +1,4 @@
-<script context='module'>
+<script context="module">
     export const load = ({ error, status }) => {
         return {
             props: {
@@ -6,7 +6,6 @@
             }
         }
     }
-
 </script>
 
 <script>
